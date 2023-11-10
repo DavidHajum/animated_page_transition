@@ -27,7 +27,7 @@ class _PageTransitionController {
         scaleAnimationController!.reverse();
         Navigator.push(
           context,
-          MaterialPageRoute(
+          CustomPageRoute(
             builder: (context) => routePage,
           ),
         );
@@ -105,4 +105,11 @@ class PageTransitionReceiver extends StatelessWidget {
       child: scaffold,
     );
   }
+}
+
+class CustomPageRoute extends MaterialPageRoute {
+  CustomPageRoute({builder}) : super(builder: builder);
+
+  @override
+  Duration get transitionDuration => const Duration(milliseconds: 0);
 }

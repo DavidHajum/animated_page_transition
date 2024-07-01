@@ -53,10 +53,10 @@ class PageTransitionButton extends StatefulWidget {
   final Widget nextPage;
 
   @override
-  State<PageTransitionButton> createState() => _PageTransitionButtonState();
+  State<PageTransitionButton> createState() => PageTransitionButtonState();
 }
 
-class _PageTransitionButtonState extends State<PageTransitionButton> {
+class PageTransitionButtonState extends State<PageTransitionButton> {
   final _PageTransitionController _homeScreenController =
       _PageTransitionController();
 

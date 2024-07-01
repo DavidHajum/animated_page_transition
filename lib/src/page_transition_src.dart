@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 
 class _PageTransitionController {
   Key pageKey = const ValueKey("page_transition");
@@ -67,6 +66,13 @@ class _PageTransitionButtonState extends State<PageTransitionButton> {
     _homeScreenController.initializeAnimationController(vsync: widget.vsync);
   }
 
+  runAnimation() {
+    _homeScreenController.animateScaleTransition(
+      context: context,
+      routePage: widget.nextPage,
+    );
+  }
+
   @override
   void dispose() {
     super.dispose();
@@ -79,11 +85,7 @@ class _PageTransitionButtonState extends State<PageTransitionButton> {
       scale: _homeScreenController.scaleAnimation!,
       child: Hero(
         tag: /*"page_transition"*/ _homeScreenController.pageKey,
-        child: GestureDetector(
-          onTap: () => _homeScreenController.animateScaleTransition(
-              context: context, routePage: widget.nextPage),
-          child: widget.child,
-        ),
+        child: widget.child,
       ),
     );
   }
